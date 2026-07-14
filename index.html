@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>🇦🇷 ¡Que Argentina se quede!</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    color:white;
+    background:linear-gradient(to bottom,#6EC6FF,#B3E5FC,#FFFFFF);
+}
+
+.bandera{
+    font-size:55px;
+    animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+
+.caja{
+    background:rgba(255,255,255,.92);
+    color:#0033A0;
+    width:90%;
+    max-width:700px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 0 25px rgba(0,0,0,.3);
+}
+
+.progress{
+    width:100%;
+    height:35px;
+    background:#ddd;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00BFFF,#6EC6FF);
+    transition:.4s;
+}
+
+button{
+    margin-top:20px;
+    padding:18px 35px;
+    font-size:22px;
+    background:#00AEEF;
+    color:white;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#0095d4;
+}
+
+h1{
+    font-size:45px;
+}
+
+h2{
+    color:#0066CC;
+}
+
+footer{
+    margin-top:30px;
+    color:#003366;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="bandera">🇦🇷 ⭐⭐⭐ 🇦🇷</div>
+
+<div class="caja">
+
+<h1>¡Que Argentina se quede en el Mundial!</h1>
+
+<p>Apoya a la Selección Argentina dejando tu voto.</p>
+
+<h2 id="metaTexto">🎯 Meta: 1.000.000 votos</h2>
+
+<h1 id="contador">0 / 1.000.000</h1>
+
+<div class="progress">
+<div class="bar" id="barra"></div>
+</div>
+
+<button onclick="votar()">❤️ ¡Votar por Argentina!</button>
+
+<p id="mensaje"></p>
+
+</div>
+
+<footer>
+🐐 Vamos Argentina • ⭐⭐⭐ Campeones del Mundo 🇦🇷
+</footer>
+
+
+<script>
+
+let meta = Number(localStorage.getItem("metaArgentina")) || 1000000;
+let votos = Number(localStorage.getItem("votosArgentina")) || 0;
+
+
+function actualizar(){
+
+    while(votos >= meta){
+        meta += 1000000;
+        localStorage.setItem("metaArgentina", meta);
+    }
+
+    localStorage.setItem("votosArgentina", votos);
+
+
+    document.getElementById("contador").textContent =
+    votos.toLocaleString("es-CL") +
+    " / " +
+    meta.toLocaleString("es-CL");
+
+
+    document.getElementById("metaTexto").textContent =
+    "🎯 Meta: " +
+    meta.toLocaleString("es
